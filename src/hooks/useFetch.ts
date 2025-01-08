@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import {API_KEY} from '.././Apikey'
 export interface MoviesTypes {
   Title: string;
   Year: string;
@@ -7,7 +7,6 @@ export interface MoviesTypes {
   Type: string;
   Poster: string;
 }
-
 
 const useFetch = (query:string) => {
   const [movies, setMovies] = useState<MoviesTypes[]>([]);
@@ -19,7 +18,8 @@ const useFetch = (query:string) => {
     setError(false);
 
     try {
-      const response = await fetch(`https://www.omdbapi.com/?s=${query}&apikey=5d3c9105`); // Utilizamos directamente `API_KEY`
+
+const response = await fetch(`https://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`); // Utilizamos directamente `API_KEY`
       if (!response.ok) {
         throw new Error("Failed to fetch");
       }
